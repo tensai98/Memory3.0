@@ -12,8 +12,13 @@ import javafx.animation.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MemoryGame extends Application{
+
+    private static Logger log = LoggerFactory.getLogger(MemoryGame.class);
+
     Player player = new Player("Jan Smit"); //tijdelijke player
     private String playerName = player.getName();
     private int difficulty = 18; //initial difficulty
@@ -29,6 +34,7 @@ public class MemoryGame extends Application{
     private RadioButton rbHard = new RadioButton("Hard");
     private RadioButton rbType1 = new RadioButton("Fruits & Vegetables");
     private RadioButton rbType2 = new RadioButton("Figures");
+    private RadioButton rbType3 = new RadioButton("Cards");
     private Button btStop = new Button("Stop");
     private Button btNewGame = new Button("New Game");
     BorderPane pane = new BorderPane();
@@ -46,6 +52,7 @@ public class MemoryGame extends Application{
         ToggleGroup group2 = new ToggleGroup();
         rbType1.setToggleGroup(group2);
         rbType2.setToggleGroup(group2);
+        rbType3.setToggleGroup(group2);
         rbType1.setSelected(true);
         
         //lower screen - Button and Radio buttons
@@ -59,7 +66,7 @@ public class MemoryGame extends Application{
         cardTypeBox.setPadding(new Insets(5));
         Text titleCT = new Text("CARD TYPE");
         titleCT.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
-        cardTypeBox.getChildren().addAll(titleCT, rbType1, rbType2);
+        cardTypeBox.getChildren().addAll(titleCT, rbType1, rbType2, rbType3);
        
         HBox buttonsBox = new HBox(10);
         buttonsBox.setPadding(new Insets(25));
@@ -113,7 +120,8 @@ public class MemoryGame extends Application{
         rbHard.setTextFill(Color.ANTIQUEWHITE);
         rbType1.setTextFill(Color.ANTIQUEWHITE);
         rbType2.setTextFill(Color.ANTIQUEWHITE);
-        
+        rbType3.setTextFill(Color.ANTIQUEWHITE);
+
         //set Scene
         Scene scene = new Scene(pane, 1360, 768);
         memoryStage.setTitle("Memory");
@@ -172,7 +180,14 @@ public class MemoryGame extends Application{
                 cardType = "figures";
                 reset();
             }
-        }); 
+        });
+
+        rbType3.setOnAction(e->{
+            if(rbType3.isSelected()){
+                cardType = "cards";
+                reset();
+            }
+        });
 
     }
     
@@ -197,6 +212,7 @@ public class MemoryGame extends Application{
     
     
     public static void main(String[] args){
+        log.info("Hello world!");
         launch(args);
     }
     
