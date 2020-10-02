@@ -1,3 +1,5 @@
+package com.game.memory.stupid;
+
 public class Score implements Comparable<Score> {
     private Player player;
     private int score;
