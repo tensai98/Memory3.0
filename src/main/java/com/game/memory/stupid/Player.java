@@ -1,3 +1,5 @@
+package com.game.memory.stupid;
+
 import java.util.Collections;
 import java.util.LinkedList;
 
