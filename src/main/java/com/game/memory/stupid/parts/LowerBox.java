@@ -30,28 +30,7 @@ public class LowerBox extends HBox {
 
         VBox cardTypeBox = createCardTypeBox();
 
-        Button btStop = new Button("Stop");
-        btStop.setMinWidth(80);
-        btStop.setStyle("-fx-base: paleturquoise");
-        btStop.setOnMouseEntered(e -> btStop.setEffect(new DropShadow()));
-        btStop.setOnMouseExited(e -> btStop.setEffect(null));
-        btStop.setOnAction(e -> {
-            game.reset();
-            //terug naar suite
-            //verder te implementeren
-        });
-
-        Button btNewGame = new Button("New Game");
-        btNewGame.setMinWidth(80);
-        btNewGame.setStyle("-fx-base: paleturquoise");
-        btNewGame.setOnMouseEntered(e -> btNewGame.setEffect(new DropShadow()));
-        btNewGame.setOnMouseExited(e -> btNewGame.setEffect(null));
-        btNewGame.setOnAction(e -> game.reset());
-
-
-        HBox buttonsBox = new HBox(10);
-        buttonsBox.setPadding(new Insets(25));
-        buttonsBox.getChildren().addAll(btNewGame, btStop);
+        HBox buttonsBox = createButtonsBox();
 
         this.setSpacing(25);
         this.setStyle("-fx-background-color: #4097f4");
@@ -123,6 +102,34 @@ public class LowerBox extends HBox {
             game.reset();
         });
         return radioButton;
+    }
+
+    private HBox createButtonsBox() {
+
+        Button btStop = getButton("Stop");
+
+        Button btNewGame = getButton("New Game");
+
+        HBox buttonsBox = new HBox(10);
+        buttonsBox.setPadding(new Insets(25));
+        buttonsBox.getChildren().addAll(btNewGame, btStop);
+
+        return buttonsBox;
+    }
+
+    private Button getButton(String text) {
+        Button button = new Button(text);
+        button.setMinWidth(80);
+        button.setStyle("-fx-base: paleturquoise");
+        button.setOnMouseEntered(e -> button.setEffect(new DropShadow()));
+        button.setOnMouseExited(e -> button.setEffect(null));
+        button.setOnAction(e -> {
+            game.reset();
+            //terug naar suite
+            //verder te implementeren
+        });
+
+        return button;
     }
 
 }
