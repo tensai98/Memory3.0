@@ -79,7 +79,7 @@ public class ScoreBox extends VBox {
     public void addTry(String txt) {
         tries++;
         txtTries.setText(tries + "");
-        log.info("Try number: {}. {}", txt, tries);
+        log.info("Try number: {}. {}", tries, txt);
     }
 
     public void endGame() {

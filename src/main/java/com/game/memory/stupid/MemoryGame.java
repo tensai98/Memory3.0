@@ -39,7 +39,7 @@ public class MemoryGame extends Application {
         pane.setCenter(memoryPane);
 
         //set Scene
-        Scene scene = new Scene(pane, 1360, 768);
+        Scene scene = new Scene(pane, 1600, 1080);
         memoryStage.setTitle("Memory");
         memoryStage.setScene(scene);
         memoryStage.show();
